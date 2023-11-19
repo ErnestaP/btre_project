@@ -15,8 +15,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+# paths are linked to a view method
+# or we can link to url from another file like here we are linking to admin urls
+# when we are creating listing app, it will create new folder called listings
+# and we want to create new urls.py in that listings app
+# and in the main urls.py we will bring that in as its done with admin
+# any specific route that we want like: listings/add, we will put in listings/url.py
+# global is url.py is like collection of all of the urls
 
 urlpatterns = [
+    path('', include('pages.urls')), # empty, because we just want to have it in home page
     path('admin/', admin.site.urls),
 ]

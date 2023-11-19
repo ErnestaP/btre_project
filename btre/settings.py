@@ -25,12 +25,13 @@ SECRET_KEY = 'django-insecure-zt&+c$)(dz&bad07mqaorh=y6c@6ql@m-c6ihz+060_*k%%!&5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [] # digitalociean domain should go here. Allowed_hosts is a list of hosts that project is served
 
 
 # Application definition
-
+# mulitple apps per project. These are default apps that come by default with django
 INSTALLED_APPS = [
+    'pages.apps.PagesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,13 +49,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+# full import  where the root url conf is. It's usually the name of the project.url
 ROOT_URLCONF = 'btre.urls'
 
+# built in Django servers using in
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,6 +69,7 @@ TEMPLATES = [
     },
 ]
 
+# wsgi server
 WSGI_APPLICATION = 'btre.wsgi.application'
 
 
@@ -115,7 +118,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+# for css, js, images and etc
+STATIC_ROOT = BASE_DIR / 'static'
+STATIC_URL =  'static/'
+# location of our static folder
+STATICFILES_DIRS = [
+	BASE_DIR / 'btre/static']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
