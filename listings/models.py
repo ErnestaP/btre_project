@@ -16,6 +16,7 @@ class Listing(models.Model): # we are extending base mode
     garage = models.IntegerField(default=0)
     sqft = models.IntegerField(default=0)
     lot_size = models.DecimalField(max_digits=5, decimal_places=1)
+    list_date = models.DateTimeField(default=datetime.now, blank=True)
     photo_main = models.ImageField(upload_to='photos/%Y/%m/%d')#we are defininf folder that we want to have inside media folder. All pics and files that we are uploading through admin area they goes to media folder
     photo_1 = models.ImageField(upload_to='photos/%Y/%m/%d', blank=True)
     photo_2 = models.ImageField(upload_to='photos/%Y/%m/%d', blank = True)
@@ -23,7 +24,8 @@ class Listing(models.Model): # we are extending base mode
     photo_4 = models.ImageField(upload_to='photos/%Y/%m/%d', blank = True)
     photo_5 = models.ImageField(upload_to='photos/%Y/%m/%d', blank = True)
     photo_6 = models.ImageField(upload_to='photos/%Y/%m/%d', blank = True)
-    is_published = models.DateTimeField(default=datetime.now, blank=True)
+    is_published = models.BooleanField(default=True)
+
     def __str__(self):
         return self.title # the main field we wanna display in admin area
 
