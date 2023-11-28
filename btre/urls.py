@@ -30,4 +30,4 @@ urlpatterns = [
     path('', include('pages.urls')), # empty, because we just want to have it in home page
     path('listings/', include('listings.urls')),
     path('admin/', admin.site.urls),
-] + static(settings.MEDIA_URL, documents_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
